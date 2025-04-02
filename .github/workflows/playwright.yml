@@ -6,17 +6,28 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  actions: read
+  contents: write
+  checks: write
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Test Network Connectivity
+        run: |
+          curl -v https://api.github.com
+
       - uses: actions/setup-node@v3
         with:
-          node-version: 18  
+          node-version: 18
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright Tests
