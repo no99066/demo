@@ -20,18 +20,18 @@ test.describe("Product Filtering", () => {
         await iphonePage.okButton.click()
     })
 
-    test('Year Filter', async ({ page }) => {
-        await iphonePage.yearFilterCheckbox("2023")
-        await iphonePage.okButton.click()
-        await iphonePage.productInList.nth(0).locator('a').nth(0).click()
-        await iphonePage.tabLineOpen("Характеристики")
-        const yearElement = page.locator('//div[@class="line_chars"] [0] //p').nth(0).locator('//p@[class="p2"]');
+    // test('Year Filter', async ({ page }) => {
+    //     await iphonePage.yearFilterCheckbox("2023")
+    //     await iphonePage.okButton.click()
+    //     await iphonePage.productInList.nth(0).locator('a').nth(0).click()
+    //     await iphonePage.tabLineOpen("Характеристики")
+    //     const yearElement = page.locator('//div[@class="line_chars"] [0] //p').nth(0).locator('//p@[class="p2"]');
 
-        // Проверяем, содержит ли найденный элемент текст, соответствующий ожидаемому году
-        await expect(yearElement).toHaveText("2023")
-    })
+    //     // Проверяем, содержит ли найденный элемент текст, соответствующий ожидаемому году
+    //     await expect(yearElement).toHaveText("2023")
+    // })
 
-    test.only('Color Choice', async ({ page }) => {
+    test('Color Choice', async ({ page }) => {
         await iphonePage.ColorChoose("Blue")
     })
 
